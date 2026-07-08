@@ -1,131 +1,53 @@
-#!/bin/bash
-# Kali AI Helper - Easy One-Shot Installer (Core Version)
-# Run this after extracting the ZIP
+HOW TO INSTALL AND USE
+This guide is written for complete beginners who have never done anything like this before. Follow each step slowly and carefully.
+Installation Steps
+Step 1: Downloading the Tool
 
-set -e
+Go to this GitHub repository page
+Find and click the button to download the ZIP file
+Save the ZIP file to an easy location, such as your Downloads folder
 
-echo "=========================================="
-echo "   Kali AI Helper v3.0 - Core Installer"
-echo "=========================================="
+Step 2: Extracting the Files
 
-read -p "Continue with installation? (y/N): " confirm
-if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
-    echo "Installation cancelled."
-    exit 0
-fi
+Go to the folder where you saved the ZIP file
+Right-click on the ZIP file
+Choose the option to Extract or Unzip it
+Remember the name of the new folder that appears after extraction
 
-echo "[1/6] Installing core dependencies..."
-sudo apt update && sudo apt install -y \
-    curl git xterm alacritty python3-pip jq
+Step 3: Running the Main Installer
 
-echo "[2/6] Installing Aider..."
-curl -LsSf https://aider.chat/install.sh | sh
+Open the new folder you just extracted
+Inside this folder, find the file named INSTALL.sh
+Open a terminal window
+Navigate into the extracted folder using the terminal
+Run the file named INSTALL.sh
+Follow any instructions that appear on the screen
 
-echo "[3/6] Installing Open WebUI..."
-pip3 install open-webui --break-system-packages || true
+Step 4: Finishing Setup
 
-echo "[4/6] Installing Ollama..."
-curl -fsSL https://ollama.com/install.sh | sh
-ollama serve >/dev/null 2>&1 &
+After the installer finishes, run the file named legend
+This will show you a small window with the main commands you can use
 
-echo "[5/6] Creating KaliHelper AI model..."
-cat > /tmp/KaliHelper.Modelfile << 'EOF'
-FROM llama3.2:3b
+How to Use the Tool
 
-SYSTEM """
-You are KaliHelper — expert Kali Linux penetration testing assistant.
-Specialized in recon, scanning, exploitation, scripting and red team ops.
-Be technical, direct, and helpful. Always include legal disclaimer when needed.
-"""
+To ask the AI a quick question, use the main quick command file
+To have a longer conversation that the AI remembers, use the persistent chat file
+To get help with writing or editing code, use the coding assistant file
+To open a floating window with the AI, use the floating terminal file
+To see the list of commands again, run the legend file
 
-PARAMETER temperature 0.65
-PARAMETER num_ctx 12288
-EOF
+Optional Features
+Voice Mode
 
-ollama rm kali-helper 2>/dev/null || true
-ollama create kali-helper -f /tmp/KaliHelper.Modelfile
+If you want to speak to the AI and have it speak back:
+Go to the folder named addons/voice
+Run the file named INSTALL-VOICE.sh
+After that, you can use the voice file anytime
 
-echo "[6/6] Installing commands..."
+Web Browser Interface
 
-sudo tee /usr/local/bin/kali-chat > /dev/null << 'EOF'
-#!/bin/bash
-echo "=== KaliHelper Persistent Session ==="
-ollama run kali-helper --keepalive 1h "$@"
-EOF
+To use the AI in your web browser, run the file named start-webui.sh
 
-sudo tee /usr/local/bin/kali-aider > /dev/null << 'EOF'
-#!/bin/bash
-aider --model ollama/kali-helper "$@"
-EOF
+Keeping Everything Updated
 
-sudo tee /usr/local/bin/kali-ai-float > /dev/null << 'EOF'
-#!/bin/bash
-if command -v alacritty >/dev/null; then
-    alacritty -t "KaliHelper AI" --dimensions 100 38 -e bash -c 'exec kali-chat' &
-else
-    xterm -geometry 100x38+100+80 -title "KaliHelper AI" -e bash -c 'exec kali-chat' &
-fi
-EOF
-
-sudo tee /usr/local/bin/kali-legend > /dev/null << 'EOF'
-#!/bin/bash
-cat > /tmp/kali-legend.txt << 'LEGEND'
-╔══════════════════════════════════════╗
-║     🔥 KaliHelper Quick Commands     ║
-╠══════════════════════════════════════╣
-║  k      → Quick question             ║
-║  kc     → Persistent chat            ║
-║  ka     → Aider Coding Agent         ║
-║  kaf    → Floating AI Terminal       ║
-║  webui  → Open WebUI (browser)       ║
-║  legend → Show this window           ║
-╚══════════════════════════════════════╝
-LEGEND
-xterm -geometry 52x22+30+80 -title "Kali AI Legend" -bg "#1e1e1e" -fg "#00ff9f" -hold -e cat /tmp/kali-legend.txt
-EOF
-
-sudo tee /usr/local/bin/start-webui.sh > /dev/null << 'EOF'
-#!/bin/bash
-echo "🌐 Starting Open WebUI at http://localhost:8080"
-open-webui serve
-EOF
-
-sudo tee /usr/local/bin/kali-update > /dev/null << 'EOF'
-#!/bin/bash
-echo "🔄 Updating Kali AI Helper..."
-ollama pull llama3.2:3b
-curl -LsSf https://aider.chat/install.sh | sh
-echo "✅ Update complete!"
-EOF
-
-sudo chmod +x /usr/local/bin/kali-* /usr/local/bin/start-webui.sh
-
-cat >> ~/.bashrc << ALIASES
-alias k="ollama run kali-helper"
-alias kc="kali-chat"
-alias ka="kali-aider"
-alias kaf="kali-ai-float"
-alias legend="kali-legend"
-alias webui="start-webui.sh"
-alias update="kali-update"
-ALIASES
-
-if [[ -f ~/.zshrc ]]; then
-    cat >> ~/.zshrc << ALIASES
-alias k="ollama run kali-helper"
-alias kc="kali-chat"
-alias ka="kali-aider"
-alias kaf="kali-ai-float"
-alias legend="kali-legend"
-alias webui="start-webui.sh"
-alias update="kali-update"
-ALIASES
-fi
-
-echo ""
-echo "✅ Installation Complete!"
-echo ""
-echo "Run this command now to see the floating legend:"
-echo "   legend &"
-echo ""
-echo "Voice mode is available as a separate add-on."
+To update the tool in the future, simply run the file named kali-update
