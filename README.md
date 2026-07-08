@@ -58,3 +58,6 @@ Simply run the file named kali-update whenever you want the latest improvements.
 🎉 Congratulations!
 You now have your own powerful AI assistant ready on Kali Linux!
 Enjoy exploring, learning, and securing with your new AI friend.
+
+
+"This project combines open source tools (Ollama, Aider, Open WebUI) with custom scripts."
