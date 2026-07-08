@@ -1,53 +1,60 @@
-HOW TO INSTALL AND USE
-This guide is written for complete beginners who have never done anything like this before. Follow each step slowly and carefully.
-Installation Steps
-Step 1: Downloading the Tool
+🚀 HOW TO INSTALL AND USE
+Kali AI Helper
+Your personal AI assistant for Kali Linux on Raspberry Pi 5!
 
-Go to this GitHub repository page
-Find and click the button to download the ZIP file
-Save the ZIP file to an easy location, such as your Downloads folder
+🎯 Step 1: Download the Tool
 
-Step 2: Extracting the Files
+Go to the GitHub repository page.
+Click the big Download ZIP button.
+Save the ZIP file to an easy place like your Downloads folder.
 
-Go to the folder where you saved the ZIP file
-Right-click on the ZIP file
-Choose the option to Extract or Unzip it
-Remember the name of the new folder that appears after extraction
 
-Step 3: Running the Main Installer
+📦 Step 2: Extract the Files
 
-Open the new folder you just extracted
-Inside this folder, find the file named INSTALL.sh
-Open a terminal window
-Navigate into the extracted folder using the terminal
-Run the file named INSTALL.sh
-Follow any instructions that appear on the screen
+Go to the folder where you saved the ZIP.
+Right-click on the ZIP file.
+Choose Extract Here or Extract All.
+Open the new folder that appears.
 
-Step 4: Finishing Setup
 
-After the installer finishes, run the file named legend
-This will show you a small window with the main commands you can use
+🔥 Step 3: Run the Main Installer
 
-How to Use the Tool
+Open the extracted folder.
+Find the file named INSTALL.sh.
+Open a Terminal window.
+Navigate into the extracted folder.
+Run the file named INSTALL.sh.
+Follow any instructions that appear on screen.
 
-To ask the AI a quick question, use the main quick command file
-To have a longer conversation that the AI remembers, use the persistent chat file
-To get help with writing or editing code, use the coding assistant file
-To open a floating window with the AI, use the floating terminal file
-To see the list of commands again, run the legend file
 
-Optional Features
-Voice Mode
+✅ Step 4: Finish Setup
 
-If you want to speak to the AI and have it speak back:
-Go to the folder named addons/voice
-Run the file named INSTALL-VOICE.sh
-After that, you can use the voice file anytime
+After the installer completes, run the file named legend.
+A helpful floating window will appear showing all the main commands.
 
-Web Browser Interface
 
-To use the AI in your web browser, run the file named start-webui.sh
+🎮 How to Use the Tool
 
-Keeping Everything Updated
+Quick questions → Use the quick command file
+Long conversations (AI remembers everything) → Use the persistent chat file
+Coding help → Use the coding assistant file
+Floating AI window → Use the floating terminal file
+See all commands → Run the legend file anytime
 
-To update the tool in the future, simply run the file named kali-update
+
+🎤 Voice Mode (Optional & Fun!)
+
+Go into the folder named addons/voice.
+Run the file named INSTALL-VOICE.sh.
+Once installed, start speaking to the AI with the voice file.
+
+
+🌐 Web Browser Mode
+Run the file named start-webui.sh to open the AI in your web browser.
+
+🔄 Keeping Everything Updated
+Simply run the file named kali-update whenever you want the latest improvements.
+
+🎉 Congratulations!
+You now have your own powerful AI assistant ready on Kali Linux!
+Enjoy exploring, learning, and securing with your new AI friend.
