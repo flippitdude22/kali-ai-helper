@@ -1,7 +1,7 @@
 #!/bin/bash
 # Kali AI Helper - Voice Add-on Installer
 # Run this only if you want voice input/output
-
+sudo apt update && sudo apt upgrade -y 
 set -e
 
 echo "=========================================="
